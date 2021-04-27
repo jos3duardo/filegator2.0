@@ -7,7 +7,7 @@ import store from './store'
 
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
   mode: 'hash',
   routes: [
     {
@@ -32,3 +32,6 @@ export default new Router({
     },
   ]
 })
+
+
+export default router

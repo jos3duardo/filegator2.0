@@ -220,6 +220,7 @@ export default {
       this.isLoading = true
       this.checked = []
       this.currentPage = 1
+
       api.changeDir({
         to: to.query.cd
       })

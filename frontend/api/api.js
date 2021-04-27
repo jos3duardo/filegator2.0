@@ -34,6 +34,7 @@ const api = {
     })
   },
   logout() {
+    localStorage.removeItem('redirect')
     return new Promise((resolve, reject) => {
       axios.post('logout')
         .then(res => resolve(res.data.data))

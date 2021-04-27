@@ -12,7 +12,16 @@ import Login from './views/Login'
 
 export default {
   name: 'App',
-  components: { Login }
+  components: { Login },
+  beforeMount() {
+    if(this.is('guest')) {
+      const { query } = this.$route
+      if (query && !!query.cd) {
+        localStorage.setItem('redirect', JSON.stringify(query))
+      }
+    }
+
+  }
 }
 </script>
 
