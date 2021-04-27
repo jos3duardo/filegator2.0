@@ -48,6 +48,7 @@ export default {
     }
   },
   mounted() {
+
     if (this.$store.state.config.guest_redirection) {
       window.location.href = this.$store.state.config.guest_redirection
       return
@@ -62,9 +63,11 @@ export default {
       })
         .then(user => {
           this.$store.commit('setUser', user)
+          const redirect = JSON.parse(localStorage.getItem('redirect'))
+          const createRoute = redirect ? `/?cd=${redirect.cd}` : '/'
           api.changeDir({
-            to: '/'
-          }).then(() => this.$router.push('/').catch(() => {}))
+            to: createRoute
+          }).then(() => this.$router.push(createRoute).catch(() => {}))
         })
         .catch(error => {
           if (error.response && error.response.data) {
